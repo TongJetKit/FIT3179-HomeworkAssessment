@@ -39,7 +39,7 @@
             "lookup": "properties.NAME",
             "from": {
               "data": {
-                "url": "data/dataset_clean.csv"
+                "url": "data/WHR_2023.csv"
               },
               "key": "country",
               "fields": ["gdp_per_capita"]
