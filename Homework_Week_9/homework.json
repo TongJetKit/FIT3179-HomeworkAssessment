@@ -53,7 +53,7 @@
             "field": "gdp_per_capita",
             "type": "quantitative",
             "title": "GDP per Capita",
-            "scale": {"type": "linear"}
+            "scale": {"type": "linear", "scheme":"reds"}
           },
           "tooltip": [
             {"field": "properties.NAME", "type": "nominal", "title": "Country"},
