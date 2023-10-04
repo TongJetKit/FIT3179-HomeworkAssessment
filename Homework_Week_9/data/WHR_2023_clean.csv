@@ -1,4 +1,4 @@
-,Country,Region,Year,Happiness Score,GDP per Capita,Social Support,Life Expectancy,Freedom,Generosity,Perceptions of Corruption,latitude,longitude
+,Country,Region,Year,Happiness Score,GDP per Capita,Social Support,Life Expectancy,Freedom,Generosity,Perceptions of Corruption,Latitude,Longitude
 0,Finland,Western Europe,2023,7.804,1.888,1.585,0.535,0.772,0.126,0.535,61.92411,25.748151
 1,Denmark,Western Europe,2023,7.586,1.949,1.548,0.537,0.734,0.208,0.525,56.26392,9.501785
 2,Iceland,Western Europe,2023,7.53,1.926,1.62,0.559,0.738,0.25,0.187,64.963051,-19.020835
