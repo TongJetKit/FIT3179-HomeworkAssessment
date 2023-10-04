@@ -9,29 +9,36 @@
     },
     "projection": {"type": "equalEarth"},
     "params": [{
-        "name": "Value_selection",
-        "value": "GDP per Capita",
+        "name": "region_selection",
         "bind": {
         "input": "select",
         "options": [
-            "Happiness Score",
-            "GDP per Capita",
-            "Social Support",
-            "Life Expectancy",
-            "Freedom",
-            "Generosity",
-            "Perceptions of Corruption"
+            null,
+            "Central and Eastern Europe",
+            "Commonwealth of Independent States",
+            "East Asia",
+            "Latin America and Caribbean",
+            "Middle East and North Africa",
+            "North America and ANZ",
+            "South Asia",
+            "Southeast Asia",
+            "Sub-Saharan Africa",
+            "Western Europe"
         ],
         "labels":[
-            "Happiness Score",
-            "GDP per Capita",
-            "Social Support",
-            "Life Expectancy",
-            "Freedom",
-            "Generosity",
-            "Perceptions of Corruption"
+          "Show All",
+          "Central and Eastern Europe",
+          "Commonwealth of Independent States",
+          "East Asia",
+          "Latin America and Caribbean",
+          "Middle East and North Africa",
+          "North America and ANZ",
+          "South Asia",
+          "Southeast Asia",
+          "Sub-Saharan Africa",
+          "Western Europe"
         ],
-      "name": "Display: "
+      "name": "Continent: "
       }
       }],
     "layer": [
@@ -42,9 +49,11 @@
             "as": "note"
           }
         ],
-        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+        "mark": {"type": "geoshape", "fill": "grey", "stroke": "lightgrey"},
         "encoding": {"tooltip": {"field": "note"}}
       },
+
+
       {
         "data": {
           "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
@@ -52,6 +61,8 @@
         },
         "mark": {"type": "geoshape", "fill": "skyblue"}
       },
+
+
       {
         "data": {
           "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
@@ -59,37 +70,92 @@
         },
         "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
       },
+
+
       {
         "transform": [
           {
             "lookup": "properties.NAME",
             "from": {
               "data": {
-                "url": "data/WHR_2023.csv"
+                "url": "https://raw.githubusercontent.com/TongJetKit/FIT3179-HomeworkAssessment/main/Homework_Week_9/data/WHR_2023_clean.csv"
               },
               "key": "Country",
-              "fields": ["Happiness Score",
-              "GDP per Capita",
-              "Social Support",
-              "Life Expectancy",
-              "Freedom",
-              "Generosity",
-              "Perceptions of Corruption"]
+              "fields": ["Region",
+              "GDP per Capita"]
             }
+          },
+          {
+            "filter": "region_selection == null || datum.Region == region_selection"
           }
         ],
+
         "mark": {"type": "geoshape"},
         "encoding": {
           "color": {
             "field": "GDP per Capita",
             "type": "quantitative",
-            "scale": {"type": "linear", "scheme": "reds"}
+            "scale": {"type": "linear", "scheme": "browns"}
           },
           "tooltip": [
             {"field": "properties.NAME", "type": "nominal", "title": "Country"},
             {"field": "GDP per Capita", "type": "quantitative"}
           ]
         }
+      },
+
+      { 
+        "data":{
+          "url": "https://raw.githubusercontent.com/TongJetKit/FIT3179-HomeworkAssessment/main/Homework_Week_9/data/WHR_2023_clean.csv"
+        },
+        "encoding": {
+          "longitude": {"field": "Longitude", "type": "quantitative"},
+          "latitude": {"field": "Latitude", "type": "quantitative"}
+        },
+        "layer": [
+          {
+            "transform": [
+              {
+                "filter": "region_selection == null || datum.Region == region_selection"
+              },
+              {
+                "window": [{"op": "rank", "as": "ranking"}],
+                "sort": [{"field": "Happiness Score", "order": "descending"}]
+              },
+              {"filter": "datum.ranking == 1"},
+              {
+                "calculate": " datum['Country'] + ' has the highest Happiness Score: ' + datum['Happiness Score']",
+                "as": "text_annotation_raw"
+              },
+              {
+                "calculate": "split(datum.text_annotation_raw, ';')",
+                "as": "text_annotation"
+              }
+            ],
+            "layer": [
+              {
+                "mark": {
+                  "type": "point",
+                  "size": 200,
+                  "shape": "diamond",
+                  "color":"lightyellow"
+                }
+              },
+              {
+                "mark": {
+                  "type": "text",
+                  "align": "right",
+                  "dx": -8,
+                  "dy": -8,
+                  "fontStyle": "italic",
+                  "fontWeight": "bold",
+                  "color": "#F8FF95"
+                },
+                "encoding": {"text": {"field": "text_annotation"}}
+              }
+            ]
+          }
+        ]
       }
     ],
     "config": {}
