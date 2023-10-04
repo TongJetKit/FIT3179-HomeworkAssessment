@@ -43,21 +43,20 @@
                 "url": "https://raw.githubusercontent.com/TongJetKit/FIT3179-HomeworkAssessment/main/Homework_Week_9/data/WHR_2023.csv"
               },
               "key": "country",
-              "fields": ["gdp_per_capita"]
+              "fields": ["GDP per Capita"]
             }
           }
         ],
         "mark": {"type": "geoshape"},
         "encoding": {
           "color": {
-            "field": "gdp_per_capita",
+            "field": "GDP per Capita",
             "type": "quantitative",
-            "title": "GDP per Capita",
             "scale": {"type": "linear", "scheme":"reds"}
           },
           "tooltip": [
             {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-            {"field": "gdp_per_capita", "type": "quantitative", "title": "GDP per Capita"}
+            {"field": "GDP per Capita", "type": "quantitative", "title": "GDP per Capita"}
           ]
         }
       }
