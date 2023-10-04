@@ -49,7 +49,7 @@
             "as": "note"
           }
         ],
-        "mark": {"type": "geoshape", "fill": "grey", "stroke": "lightgrey"},
+        "mark": {"type": "geoshape", "fill": "#9E9FA5", "stroke": "lightgrey"},
         "encoding": {"tooltip": {"field": "note"}}
       },
 
