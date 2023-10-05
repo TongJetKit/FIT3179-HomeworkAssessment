@@ -44,7 +44,7 @@
               "data": {
                 "url": "https://raw.githubusercontent.com/TongJetKit/FIT3179-HomeworkAssessment/main/Homework_Week_9/data/WHR_2023.csv"
               },
-              "key": "country",
+              "key": "Country",
               "fields": ["GDP per Capita"]
             }
           }

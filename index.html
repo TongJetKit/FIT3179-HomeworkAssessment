@@ -8,10 +8,19 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
 </head>
 <body>
+  <h2>1. Homework Week 9</h2> 
   <div id="vis"></div>
+  <hr>
+  <br>
+  <h2>2. Homework Week 10</h2> 
+  <div id ="vis2"></div>
+
   <script>
     var spec = "https://raw.githubusercontent.com/TongJetKit/FIT3179-HomeworkAssessment/main/Homework_Week_9/homework.json";
     vegaEmbed('#vis', spec).then(function(result) {}).catch(console.error);
+
+    var spec = "https://raw.githubusercontent.com/TongJetKit/FIT3179-HomeworkAssessment/main/Homework_Week_9/homework2.json"
+    vegaEmbed('#vis2', spec).then(function(result){}).catch(console.error)
   </script>
 </body>
 </html>
