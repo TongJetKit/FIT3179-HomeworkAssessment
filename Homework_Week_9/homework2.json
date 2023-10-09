@@ -144,11 +144,12 @@
               {
                 "mark": {
                   "type": "text",
-                  "align": "right",
+                  "align": "left",
                   "dx": -8,
                   "dy": -8,
                   "fontStyle": "italic",
                   "fontWeight": "bold",
+                  "fontSize": 10.5,
                   "color": "#F8FF95"
                 },
                 "encoding": {"text": {"field": "text_annotation"}}
